@@ -1,33 +1,41 @@
-//class ShippingCosts
-//main()
-//num itemPrice
-//num shipCost
-//OUTPUT “Enter your item price: “
-//INPUT itemPrice
-//if itemPrice >= 100 then
-//   shipCost = 0
-//else
-//   shipCost = itemPrice * 0.02
-//endIf
-//totalPrice = itemPrice + shipCost
-//OUTPUT "The cost of shipping on your $" + itemPrice “ item is “ + shipCost
-//OUTPUT “The total price is $“ + totalPrice
-//return
-//end class
-public class Main {
-    public static void main(String[] args)
+import java.util.Scanner;
+public class Main //class name
+{
+    public static void main(String[] args) //main()
     {
-        double itemPrice = 0;
-
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
-
-        for (int i = 1; i <= 5; i++)
+        Scanner in = new Scanner(System.in);
+        double itemPrice = 0; //listing out variables
+        double shipCost = 0;
+        double totalCost = 0;
+        String trash = ""; //trash is for invalid input
+        System.out.print("Enter your item price: "); //OUTPUT
+        if(in.hasNextDouble()) //checking if input is a double
         {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
+            itemPrice = in.nextDouble(); //input, set to variable
+            in.nextLine(); //clear input buffer
+            if(itemPrice >= 100) //shipping cost is 0 if item is more or equal to 100
+            {
+                shipCost = 0;
+                System.out.println("There is no shipping cost.");
+                totalCost = itemPrice + shipCost;
+                System.out.printf("Your total cost is: $" + totalCost);
+            }
+            else if(itemPrice < 100 && itemPrice >= 0) //shipping cost is 2% of item price if item is less than $100 and not negative
+            {
+                shipCost = itemPrice * .02;
+                System.out.printf("Your shipping cost is: $ %.2f" , shipCost);
+                totalCost = itemPrice + shipCost;
+                System.out.printf("%n" + "Your total cost is: $ %.2f" , totalCost); //%n is added to make a new line with SOUTprintf
+            }
+            else //if item price input is negative, it is an invalid number
+            {
+                System.out.println("Your input " + itemPrice + " is invalid. Please try again.");
+            }
+        }
+        else //if item price input was never a double, it is an invalid number
+        {
+            trash = in.nextLine();
+            System.out.println("Your input " + trash + " is invalid. Please try again.");
         }
     }
 }
