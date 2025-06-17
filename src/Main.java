@@ -4,9 +4,9 @@ public class Main //class name
     public static void main(String[] args) //main()
     {
         Scanner in = new Scanner(System.in);
-        double itemPrice = 0; //listing out variables
-        double shipCost = 0;
-        double totalCost = 0;
+        double itemPrice = 0.0; //listing out variables
+        double shipCost = 0.0;
+        double totalCost = 0.0;
         String trash = ""; //trash is for invalid input
         System.out.print("Enter your item price: "); //OUTPUT
         if(in.hasNextDouble()) //checking if input is a double
